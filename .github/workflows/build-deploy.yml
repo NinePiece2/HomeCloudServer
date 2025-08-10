@@ -30,6 +30,7 @@ jobs:
       run: |
         mkdir docs
         cp README.md docs/
+        cp -r images/* docs/images/
         mkdir -p docs/Old_Versions
         cp -r Old_Versions/* docs/Old_Versions/
 
