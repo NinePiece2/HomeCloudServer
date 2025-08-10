@@ -7,14 +7,14 @@ theme:
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
+        icon: material/weather-sunny
+        name: Switch to light mode
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
+        icon: material/weather-night
+        name: Switch to dark mode
   features:
     - toggle.dark_mode
 
