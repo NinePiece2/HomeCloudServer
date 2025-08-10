@@ -3,7 +3,7 @@ site_name: Home Cloud Server
 theme:
   name: 'material'
 
-docs_dir: .
+docs_dir: docs
 nav:
   - 'Home': 'README.md'
   - 'Old Versions':
