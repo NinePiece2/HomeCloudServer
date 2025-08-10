@@ -26,6 +26,13 @@ jobs:
       run: |
         pip install mkdocs mkdocs-material
 
+    - name: Prepare docs folder
+      run: |
+        mkdir docs
+        cp README.md docs/
+        mkdir -p docs/OldVersions
+        cp -r OldVersions/* docs/OldVersions/
+
     - name: Build and deploy
       run: |
         mkdocs gh-deploy --force

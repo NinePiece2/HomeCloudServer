@@ -7,4 +7,4 @@ docs_dir: .
 nav:
   - 'Home': 'README.md'
   - 'Old Versions':
-      - 'v1.0': 'OldVersions/v1.0/README.md'
+      - 'v1.0': 'Old_Versions/v1.0/README.md'
