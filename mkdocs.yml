@@ -4,6 +4,9 @@ repo_name: NinePiece2/HomeCloudServer
 site_url: https://homecloudserver.romitsagu.com
 copyright: Copyright © 2025 Romit Sagu
 
+extra_css:
+  - overrides.css
+
 theme:
   language: en
   font:
@@ -28,6 +31,7 @@ theme:
   features:
     - toggle.dark_mode
     - content.code.copy
+    
 extra:
   generator: false
   social:

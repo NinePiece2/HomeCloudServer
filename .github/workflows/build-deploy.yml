@@ -34,6 +34,7 @@ jobs:
         mkdir -p docs/Old_Versions
         cp -r Old_Versions/* docs/Old_Versions/
         cp Deployment/CNAME docs/
+        cp Style/overrides.css docs/
 
     - name: Build and deploy
       run: |
