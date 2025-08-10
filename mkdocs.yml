@@ -1,6 +1,16 @@
 site_name: Home Cloud Server
+repo_url: https://github.com/NinePiece2/HomeCloudServer
+repo_name: NinePiece2/HomeCloudServer
+site_url: https://homecloudserver.romitsagu.com
+copyright: Copyright © 2025 Romit Sagu
 
 theme:
+  language: en
+  font:
+    text: Poppins
+    code: Fira Code
+  icon:
+      repo: fontawesome/brands/github
   name: 'material'
   palette:
     - scheme: slate
@@ -17,6 +27,13 @@ theme:
         name: Switch to dark mode
   features:
     - toggle.dark_mode
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://GitHub.com/NinePiece2
+    - icon: fontawesome/brands/linkedin
+      link: https://Linkedin.com/in/romit-sagu
 
 docs_dir: docs
 nav:
