@@ -20,7 +20,7 @@
 
 First off most of this project will be documented in this README markdown along with the history of the project, and much of the troubleshooting done to get the server to where it is now.
 
-Old versions of this documnet are available in the [Old Version 📁](/Old_Versions/v1.0)
+Old versions of this documnet are available in the [Old Versions 📁](/Old_Versions/v1.0) folder.
 
 ## Past Configurations and Insperations
 
@@ -44,7 +44,7 @@ After using the v1.0 configuration for 2 years it was clear that some improvemen
 
 Other than the aformemtioned 12 drive HDD array there is a 2 250GB SSD mirror for boot and a 3 250GB ssd RaidZ1 for Virtual Machine ZVol storage and for docker storage. There is also a single Kioxia CD6-R 3.84TB drive without any redundency which is used by a [LanCache](#dns-lancache-and-pihole) VM for the cache storage.
 
-This server runs TrueNAS Scale ElectricEel.
+This server runs TrueNAS Scale ElectricEel (TrueNAS-24.10.2.2).
 
 Connectivity wise this server has an Nvidia P2000 for plex media encoding, an LSI 9207-8I along with the 8 onboard SATA to connect 16 drives as well as an LSI 9200-8e connected to a 45 Bay Supermicro JBOD I got off Ebay. There is also a Mellanox ConnectX-3 CX354A Dual 40GbE QSFP+ network card.
 
