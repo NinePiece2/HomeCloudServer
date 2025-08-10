@@ -48,7 +48,7 @@ This server runs TrueNAS Scale ElectricEel.
 
 Connectivity wise this server has an Nvidia P2000 for plex media encoding, an LSI 9207-8I along with the 8 onboard SATA to connect 16 drives as well as an LSI 9200-8e connected to a 45 Bay Supermicro JBOD I got off Ebay. There is also a Mellanox ConnectX-3 CX354A Dual 40GbE QSFP+ network card.
 
-[<img src=images/CurrentConfig.png height=500>](images/CurrentConfig.png)
+[<img src=images/CurrentConfig.PNG height=500>](images/CurrentConfig.PNG)
 
 ### Proxmox
 
