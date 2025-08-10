@@ -2,6 +2,19 @@ site_name: Home Cloud Server
 
 theme:
   name: 'material'
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
 
 docs_dir: docs
 nav:
