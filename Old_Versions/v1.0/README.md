@@ -1,7 +1,7 @@
 # Home Cloud Server
 
 ## Table of Contents
-- [TrueNASHomeServer](#truenashomeserver)
+- [Home Cloud Server](#home-cloud-server)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Past Configurations and Insperations](#past-configurations-and-insperations)
