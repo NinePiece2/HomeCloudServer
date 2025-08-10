@@ -36,4 +36,4 @@ jobs:
 
     - name: Build and deploy
       run: |
-        mkdocs gh-deploy --force
+        mkdocs gh-deploy --force --cname homecloudserver.romitsagu.com
