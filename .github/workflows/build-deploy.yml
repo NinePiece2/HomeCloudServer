@@ -28,8 +28,8 @@ jobs:
 
     - name: Prepare docs folder
       run: |
-        mkdir docs
-        cp README.md docs/
+        mkdir -p docs
+        cp README.md docs/images
         cp -r images/* docs/images/
         mkdir -p docs/Old_Versions
         cp -r Old_Versions/* docs/Old_Versions/
