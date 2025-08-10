@@ -14,6 +14,7 @@
     - [Kubernetes](#kubernetes)
     - [Docker](#docker)
     - [DNS (LanCache and PiHole)](#dns-lancache-and-pihole)
+    - [Custom Mail Server (MailCow)](#custom-mail-server-mailcow)
   - [Future Upgradability](#future-upgradability)
 
 ## Introduction
@@ -87,6 +88,75 @@ There are docker containers that run on both servers as shown in the images belo
 I have LanCache and PiHole instances that run off the [TrueNAS](#truenas) server, the PiHole DNS server runs on docker and the LanCache DNS runs off a VM that also has a Kioxia CD6-R 3.84TB drive to use for caching data.
 
 To better visualize this data I have modified an existing LanCache UI project and made changes to include more useful features for myself. Details are available [here](https://github.com/NinePiece2/NineLanCacheUI).
+
+### Custom Mail Server (MailCow)
+
+I also have a custom mail server that runs in a virtual machine on the [TrueNAS](#truenas) server. This mail server uses <a href="https://docs.mailcow.email/getstarted/install/#installation-via-paketmanager-plugin" target="_blank" rel="noopener noreferrer">MailCow: Dockerized</a> which uses docker and docker compose to run the services required to host the mail server including sending and receiving emails. To get around residential internet restrictions where port 26 is blocked for SMTP I have a Gmail Catchall that I use to receive emails and then send to the required local mailboxes as well as a Brevo relay sender where outbound emails are sent to Brevo to then be forwarded to recipients.
+
+This is what I have added just before the ```# DO NOT EDIT ANYTHING BELOW #``` section in ```mailcow-dockerized/data/conf/postfix/main.cf```:
+```cf
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/opt/postfix/conf/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_sasl_mechanism_filter = plain, login
+
+relayhost = [smtp-relay.brevo.com]:587
+```
+
+I also made a ```sasl_passwd``` file and the required ```sasl_passwd.db``` file as a result.
+
+For the CatchAll I have Cloudflare set to forward any inbound email to my catchall gmail inbox. Then using getmail I get the new mail from the gmail inbox and forward it to the mailcow inboxes using the ```header:To:``` envelope.
+
+```~/.config/getmail/getmailrc```:
+
+```ini
+[retriever]
+type              = MultidropPOP3SSLRetriever
+server            = pop.gmail.com
+port              = 995
+username          = gmail_email
+password          = gmail_app_password
+# Gmail doesn’t give the real envelope; your best fallback is the visible To:
+envelope_recipient = header:To:
+
+[destination]
+# Two good choices – pick ONE and comment out the other
+# 1) Direct LMTP into Mailcow (dovecot listens on port 24 internally)
+type = MDA_lmtp
+host = 127.0.0.1
+port = 24          # default inside the mailcow network
+# 2) Or call dovecot-lda – works even if LMTP is unreachable from the host
+# type     = MDA_external
+# path     = /usr/lib/dovecot/deliver
+# user     = dovecot
+# arguments = ("-d", "%T")
+
+[options]
+delete     = true          # remove mail from Gmail once handed off
+read_all   = false         # only new mail
+verbose    = 1             # set 2 while testing
+```
+
+```/etc/systemd/system/getmail.service```:
+```ini
+# /etc/systemd/system/getmail.service
+[Unit]
+Description=Getmail (IMAP‑IDLE) for Gmail catch‑all → Mailcow
+After=network-online.target dovecot.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mail
+Group=mail
+# ONE unbroken ExecStart= line (wrap only with backslashes)
+ExecStart=/usr/bin/getmail --getmaildir /etc/getmail --rcfile /etc/getmail/catchall.conf --idle=INBOX
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
+```
 
 ## Future Upgradability
 
