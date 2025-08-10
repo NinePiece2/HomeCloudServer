@@ -34,6 +34,12 @@ jobs:
         mkdir -p docs/Old_Versions
         cp -r Old_Versions/* docs/Old_Versions/
 
-    - name: Build and deploy
+    - name: Build site
       run: |
-        mkdocs gh-deploy --force --cname homecloudserver.romitsagu.com
+        mkdocs build --site-dir build
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
