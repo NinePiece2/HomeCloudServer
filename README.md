@@ -20,7 +20,7 @@
 
 First off most of this project will be documented in this README markdown along with the history of the project, and much of the troubleshooting done to get the server to where it is now.
 
-Old versions of this documnet are available in the [Old Version 📁](/Old_Version/v1.0)
+Old versions of this documnet are available in the [Old Version 📁](/Old_Versions/v1.0)
 
 ## Past Configurations and Insperations
 
