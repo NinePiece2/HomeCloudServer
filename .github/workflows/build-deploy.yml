@@ -30,8 +30,8 @@ jobs:
       run: |
         mkdir docs
         cp README.md docs/
-        mkdir -p docs/OldVersions
-        cp -r OldVersions/* docs/OldVersions/
+        mkdir -p docs/Old_Versions
+        cp -r Old_Versions/* docs/Old_Versions/
 
     - name: Build and deploy
       run: |
