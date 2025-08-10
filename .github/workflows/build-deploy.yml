@@ -33,13 +33,8 @@ jobs:
         cp -r images/* docs/images/
         mkdir -p docs/Old_Versions
         cp -r Old_Versions/* docs/Old_Versions/
+        cp Deployment/CNAME docs/
 
-    - name: Build site
+    - name: Build and deploy
       run: |
-        mkdocs build --site-dir build
-
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+        mkdocs gh-deploy --force
