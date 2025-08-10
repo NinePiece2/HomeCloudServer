@@ -3,7 +3,7 @@ site_name: Home Cloud Server
 theme:
   name: 'material'
   palette:
-    - scheme: slate
+    - scheme: night
       primary: indigo
       accent: indigo
       toggle:
